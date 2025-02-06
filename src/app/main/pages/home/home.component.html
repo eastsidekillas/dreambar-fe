@@ -1,0 +1,17 @@
+<div class="relative w-full h-96 mb-36 z-20 md:h-72">
+  <app-slider></app-slider>
+</div>
+
+<div class="flex flex-col md:flex-row gap-6">
+
+  <div class="w-full md:w-4/5">
+    <app-card-list [items]="mixedEventsAndPromotions" [columns]="3" [columnssm]="3" [columnsmd]="3"></app-card-list>
+  </div>
+
+  <!-- Вертикальная галерея справа -->
+  <div class="flex flex-col space-y-4 w-full md:w-1/4 bg-accent-light-gray p-4 rounded-lg shadow-lg">
+
+  <app-gallary></app-gallary>
+
+  </div>
+</div>

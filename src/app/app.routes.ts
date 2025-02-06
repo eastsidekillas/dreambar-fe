@@ -1,17 +1,10 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import type { Route } from '@angular/router';
+import {MainRoutes} from './main/main.routes';
 
-const routes: Routes = [
+export const routes: Route[] = [
   {
     path: '',
-    loadChildren: () => import('./main/main.module').then(m => m.MainModule),
+    loadComponent: () => import('./shared/theme/default-layout/default-layout.component').then(m => m.DefaultLayoutComponent),
+    children: MainRoutes
   },
-  // Переадресация на главную страницу
-  { path: '**', redirectTo: 'channels/me' }, // Редирект для несуществующих путей
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
