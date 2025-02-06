@@ -23,16 +23,6 @@ export class ApiService {
     }
   }
 
-  // Получить конкретное мероприятие по Slug
-  async getEventBySlug(slug: string): Promise<any> {
-    try {
-      return await this.client.get(`events/${slug}/`).json();
-    } catch (error) {
-      console.error(`Ошибка при получении мероприятия ${slug}:`, error);
-      throw error;
-    }
-  }
-
   // Получить список всех акций
   async getOffers(): Promise<any> {
     try {
@@ -43,19 +33,8 @@ export class ApiService {
     }
   }
 
-
-  // Получить конкретную акцию по Slug
-  async getOffersBySlug(slug: string): Promise<any> {
-    try {
-      return await this.client.get(`offers/${slug}/`).json();
-    } catch (error) {
-      console.error(`Ошибка при получении мероприятия ${slug}:`, error);
-      throw error;
-    }
-  }
-
-  // Получить все события и акции
-  async getMixedAllData(slug: string): Promise<any> {
+  // Получить рандомные события и акции
+  async getMixedAllData(): Promise<any> {
     try {
       return await this.client.get(`getMixedAllData/`).json();
     } catch (error) {
@@ -64,11 +43,33 @@ export class ApiService {
     }
   }
 
+  // Получить конкретное мероприятие по Slug
+  async getEventBySlug(slug: string): Promise<any> {
+    try {
+      return await this.client.get(`events/${slug}/`).json();
+    } catch (error) {
+      console.error(`Ошибка при получении мероприятия ${slug}:`, error);
+      throw error;
+    }
+  }
+
+  // Получить конкретную акцию по Slug
+  async getOfferBySlug(slug: string): Promise<any> {
+    try {
+      return await this.client.get(`offers/${slug}/`).json();
+    } catch (error) {
+      console.error(`Ошибка при получении мероприятия ${slug}:`, error);
+      throw error;
+    }
+  }
+
+
+
   // Получить все события и акции
   async postReservData(formData: any): Promise<any> {
     try {
       return await this.client.post('reserv/', {
-        json: formData, // Передаём данные как JSON
+        json: formData,
       }).json();
     } catch (error) {
       console.error('Ошибка при отправке бронирования:', error);

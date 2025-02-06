@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  baseURL: 'http://localhost:8000/api/v1',
+  baseURL: 'https://docker-1.hosting.eastrust.ru/api/v1',
 };

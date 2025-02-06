@@ -2,11 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ApiService} from '../../../core/api.service';
 import {CommonModule} from '@angular/common';
+import {ReservComponent} from '../../../shared/components/reserv/reserv.component';
+import {ShareButton} from 'ngx-sharebuttons/button';
+
+
 
 @Component({
   selector: 'app-afisha-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReservComponent, ShareButton],
   templateUrl: './afisha-detail.component.html',
   styleUrl: './afisha-detail.component.css'
 })

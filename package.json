@@ -18,8 +18,13 @@
     "@angular/platform-browser": "^19.1.0",
     "@angular/platform-browser-dynamic": "^19.1.0",
     "@angular/router": "^19.1.0",
+    "@fortawesome/angular-fontawesome": "^1.0.0",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@tailwindcss/postcss": "^4.0.3",
     "ky": "^1.7.4",
+    "ngx-sharebuttons": "^16.0.0",
     "postcss": "^8.5.1",
     "rxjs": "~7.8.0",
     "swiper": "^11.2.2",
@@ -38,6 +43,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "sass": "^1.84.0",
     "typescript": "~5.7.2"
   }
 }

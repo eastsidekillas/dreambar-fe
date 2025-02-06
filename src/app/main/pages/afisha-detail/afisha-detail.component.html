@@ -1,4 +1,28 @@
-<div *ngIf="event">
-  <h1>{{ event.title }}</h1>
-  <p>{{ event.content }}</p>
+<div *ngIf="event" class="min-h-screen w-full max-w-3xl bg-main-surface-secondary text-white flex flex-col items-center  mx-auto p-6">
+
+  <!-- Контентный блок (не растягивается) -->
+  <div class="w-full space-y-6">
+
+    <!-- Заголовок -->
+    <h1 class="text-3xl font-bold text-typo-main">{{ event.title }}</h1>
+
+    <!-- Картинка -->
+    <div class="w-full h-80 rounded-lg overflow-hidden shadow-lg">
+      <img [src]="event.imageUrl" alt="{{ event.title }}" class="w-full h-full object-cover">
+    </div>
+
+    <!-- Описание события -->
+    <p class="text-lg leading-relaxed text-gray-300 ">{{ event.content }}</p>
+
+    <share-button button="vk"></share-button>
+    <share-button button="telegram"></share-button>
+    <share-button button="whatsapp"></share-button>
+  </div>
+
+  <div class="w-full py-15 px-4">
+    <div class="max-w-3xl mx-auto">
+      <app-reserv></app-reserv>
+    </div>
+  </div>
+
 </div>

@@ -28,14 +28,14 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
     try {
       // Получаем данные (мероприятия и акции)
-      const data = await this.apiService.getMixedAllData('');
+      const data = await this.apiService.getMixedAllData();
 
       // Форматируем данные
       this.mixedEventsAndPromotions = data.map((item: any) => ({
         imageUrl: item.image || 'default.jpg',  // Если изображения нет, используем дефолтное
         title: item.title,
         description: item.description,
-        link: `/event/${item.slug}`,  // Пример ссылки на событие/акцию
+        link: `/afisha/${item.slug}`,  // Пример ссылки на событие/акцию
         isPromotion: item.isPromotion
       }));
 

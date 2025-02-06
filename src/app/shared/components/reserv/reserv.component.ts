@@ -1,24 +1,22 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../core/api.service';
-import {FormsModule} from '@angular/forms';
 
 @Component({
-  selector: 'app-reserv-modal',
+  selector: 'app-reserv',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './reserv-modal.component.html',
-  styleUrl: './reserv-modal.component.css'
+  templateUrl: './reserv.component.html',
+  styleUrls: ['./reserv.component.css'],
 })
-export class ReservModalComponent implements OnInit {
+export class ReservComponent implements OnInit {
   public name: string = '';
   public phone: string = '';
   public captchaAnswer: string = '';
   public captchaQuestion: string = '';
   private captchaCorrectAnswer: number = 0;
   showCaptcha: boolean = false;
-
-  @Output() closeModal: EventEmitter<void> = new EventEmitter();
 
   constructor(private apiService: ApiService) {}
 
@@ -37,10 +35,6 @@ export class ReservModalComponent implements OnInit {
     this.showCaptcha = this.name.trim().length > 0 && this.phone.trim().length > 0;
   }
 
-  onClose() {
-    this.closeModal.emit();
-  }
-
   async onSubmit() {
     if (this.name.trim() && this.phone.trim() && this.captchaAnswer.trim()) {
       const userAnswer = parseInt(this.captchaAnswer, 10);
@@ -56,7 +50,6 @@ export class ReservModalComponent implements OnInit {
           const response = await this.apiService.postReservData(formData);
           console.log('Заявка отправлена успешно:', response);
           alert('Заявка успешно отправлена!');
-          this.onClose();
         } catch (error) {
           console.error('Ошибка при отправке заявки:', error);
           alert('Произошла ошибка при отправке заявки.');
@@ -68,7 +61,6 @@ export class ReservModalComponent implements OnInit {
       alert('Пожалуйста, заполните все поля.');
     }
   }
-
 
   formatPhone(phone: string): string {
     phone = phone.replace(/\D/g, '');

@@ -5,12 +5,14 @@ import {OffersComponent} from './pages/offers/offers.component';
 import {AboutComponent} from './pages/about/about.component';
 import {ContactsComponent} from './pages/contacts/contacts.component';
 import {AfishaDetailComponent} from './pages/afisha-detail/afisha-detail.component';
+import {OffersDetailComponent} from './pages/offers-detail/offers-detail.component';
 
 export const MainRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'afisha', component: AfishaComponent },
   { path: 'afisha/:slug', component: AfishaDetailComponent },
   { path: 'offers', component: OffersComponent },
+  { path: 'offers/:slug', component: OffersDetailComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contacts', component: ContactsComponent }
 ];

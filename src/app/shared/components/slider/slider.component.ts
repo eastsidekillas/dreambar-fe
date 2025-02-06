@@ -1,11 +1,15 @@
-import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { SwiperContainer } from 'swiper/element';
 import { NgForOf } from '@angular/common';
+import {ApiService} from '../../../core/api.service';
 
-interface Slide {
+
+interface EventItem {
   id: number;
+  banner_image: string;
   title: string;
-  imageUrl?: string;
+  link?: string;
+  isPromotion?: boolean;
 }
 
 @Component({
@@ -16,14 +20,10 @@ interface Slide {
   imports: [NgForOf],
   styleUrl: './slider.component.css'
 })
-export class SliderComponent implements AfterViewInit {
+export class SliderComponent implements AfterViewInit, OnInit {
+  eventSlides: EventItem[] = [];
   @ViewChild('swiperContainer', { static: false }) swiperContainer!: ElementRef<SwiperContainer>;
 
-  eventSlides: Slide[] = [
-    { id: 1, title: 'Событие 1', imageUrl: 'banners/banner.jpg' },
-    { id: 2, title: 'Событие 2', imageUrl: 'event2.jpg' },
-    { id: 3, title: 'Событие 3', imageUrl: 'event3.jpg' }
-  ];
 
   private swiper!: SwiperContainer;
 
@@ -41,6 +41,23 @@ export class SliderComponent implements AfterViewInit {
       }
     });
     this.swiper.initialize();
+  }
+
+
+
+  constructor(private apiService: ApiService) {}
+
+  async ngOnInit() {
+    try {
+      const events = await this.apiService.getEvents();
+      this.eventSlides = events.map((event: any) => ({
+        banner_image: event.banner_image || 'default.jpg',
+        link: `/afisha/${event.slug}`,
+        isPromotion: false
+      }));
+    } catch (error) {
+      console.error('Ошибка загрузки мероприятий:', error);
+    }
   }
 
   prevSlide() {
