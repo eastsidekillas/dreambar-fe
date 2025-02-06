@@ -1,15 +1,21 @@
-<div [ngClass]="gridClasses" class="gap-6 flex-1">
-  <div *ngFor="let item of items" class="relative shadow-lg rounded-lg overflow-hidden">
-    <img [src]="item.imageUrl" class="w-full h-96 object-cover">
-    <div *ngIf="item.isPromotion" class="absolute top-2 left-2 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
-      Акция
+<div class="grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-2 max-2xl:grid-cols-2 gap-6 flex-1">
+  <div *ngFor="let item of items" class="relative shadow-lg rounded-lg overflow-hidden flex flex-col">
+
+    <!-- Картинка фиксированной высоты -->
+    <div class="h-64">
+      <img [src]="item.imageUrl" class="w-full h-full object-cover">
     </div>
-    <div class="p-4 text-typo-light bg-typo-dark bg-gradient-to-r">
+
+    <!-- Блок с текстом (гибкая высота) -->
+    <div class="p-4 text-typo-light bg-typo-dark bg-gradient-to-r flex flex-col flex-grow">
       <h2 class="text-xl font-bold">{{ item.title }}</h2>
-      <p class="text-typo-secondary">{{ item.description }}</p>
-      <a *ngIf="item.link" [href]="item.link" class="mt-8 bg-accent-gold text-black px-4 py-2 rounded-full font-bold transition-colors hover:bg-accent-light-yellow inline-block">
+      <p class="text-typo-secondary flex-grow">{{ item.description }}</p>
+
+      <a *ngIf="item.link" [href]="item.link"
+         class="mt-4 bg-accent-gold text-black px-4 py-2 rounded-full font-bold transition-colors hover:bg-accent-light-yellow self-start">
         Подробнее
       </a>
     </div>
+
   </div>
 </div>

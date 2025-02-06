@@ -27,8 +27,9 @@ import {ReservModalComponent} from '../reserv-modal/reserv-modal.component';
 
         <div class="mt-6 text-center">
           <p class="font-semibold">Заказать банкет</p>
-          <a href="tel:+79995622871" class="bg-primary text-white py-3 px-4 rounded-full hover:bg-hover-primary transition-colors">+79995622871</a>
+          <a href="tel:+79000486700" class="bg-primary text-white py-3 px-4 rounded-full hover:bg-hover-primary transition-colors">+7(900)-048-67-00</a>
           <p class="font-semibold mt-4"> Нижняя Тура / Декабристов, 2к</p>
+          <span>3 этаж</span>
         </div>
       </div>
     </aside>

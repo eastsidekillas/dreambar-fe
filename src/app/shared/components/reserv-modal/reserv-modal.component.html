@@ -1,21 +1,21 @@
-<div class="fixed inset-0 bg-black bg-opacity-50 z-50 backdrop-blur-sm" (click)="onClose()"></div>
+<div class="fixed inset-0 bg-opacity-50 z-50 backdrop-blur-sm" (click)="onClose()"></div>
 <div class="fixed top-1/4 left-1/2 transform -translate-x-1/2 bg-main-surface-primary p-8 w-full max-w-lg rounded-lg z-50 shadow-lg">
   <h2 class="text-2xl font-semibold text-typo-main text-center mb-6">Бронирование стола</h2>
 
   <form (ngSubmit)="onSubmit()">
     <div class="mb-4">
       <label for="name" class="block text-lg text-typo-secondary font-medium">Имя</label>
-      <input id="name" [(ngModel)]="name" name="name" type="text" required
+      <input id="name" [(ngModel)]="name" (input)="checkForm()" name="name"  type="text" required
              class="w-full px-4 py-2 mt-2 text-typo-secondary border border-typo-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500" />
     </div>
 
     <div class="mb-4">
       <label for="phone" class="block text-lg text-typo-secondary font-medium">Телефон</label>
-      <input id="phone" [(ngModel)]="phone" name="phone" type="text" required
+      <input id="phone" [(ngModel)]="phone" (input)="checkForm()" name="phone" type="text" required
              class="w-full px-4 py-2 mt-2 text-typo-secondary border border-typo-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500" />
     </div>
 
-    <div class="mb-4">
+    <div *ngIf="showCaptcha" class="mb-4">
       <label for="captcha" class="block text-lg text-typo-secondary font-medium">Решите задачу</label>
       <div class="text-typo-secondary">{{ captchaQuestion }}</div>
       <input id="captcha" [(ngModel)]="captchaAnswer" name="captchaAnswer" type="text" required
@@ -32,5 +32,9 @@
     </div>
   </form>
 
-  <button (click)="onClose()" class="absolute top-2 right-2 text-white text-2xl cursor-pointer hover:text-red-500">×</button>
+  <button (click)="onClose()" class="absolute top-2 right-2 text-white text-2xl cursor-pointer hover:text-red-500">
+    <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
+    </svg>
+  </button>
 </div>
