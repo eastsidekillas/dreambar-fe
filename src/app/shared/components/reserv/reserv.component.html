@@ -1,24 +1,49 @@
-<div class="w-full space-y-6">
+<div *ngIf="isFormSubmitted" class="fixed inset-0 bg-opacity-50 z-50 backdrop-blur-sm"></div>
+<div *ngIf="isFormSubmitted" class="fixed top-1/4 left-1/2 transform -translate-x-1/2 bg-main-surface-primary p-8 w-full max-w-lg rounded-lg z-50 shadow-lg">
+  <h2 class="text-2xl font-semibold text-typo-main text-center mb-6">Заявка успешно отправлена!</h2>
+
+  <!-- Иконка звонка -->
+  <div class="flex justify-center mb-4">
+    <svg class="w-24 h-24 text-green-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+    </svg>
+
+  </div>
+
+  <!-- Сообщение -->
+  <p class="text-lg text-typo-secondary text-center mb-6">
+    Мы перезвоним вам в ближайшее время. <br> Спасибо за вашу заявку!
+  </p>
+
+  <div class="text-center">
+    <button (click)="onClose()" class="bg-accent-gold text-gray-800 px-6 py-2 rounded-lg hover:bg-accent-light-yellow focus:outline-none focus:ring-2 focus:ring-blue-500">
+      Закрыть
+    </button>
+  </div>
+</div>
+
+
+<div *ngIf="!isFormSubmitted" class="w-full space-y-6">
   <h2 class="text-2xl font-semibold text-typo-main mb-6">Забронировать стол</h2>
 
   <form (ngSubmit)="onSubmit()">
     <div class="mb-4">
       <label for="name" class="block text-lg text-typo-secondary font-medium">Имя</label>
       <input id="name" [(ngModel)]="name" name="name" type="text" required
-             class="w-full px-4 py-2 mt-2 text-typo-secondary border border-typo-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500" />
+             class="w-full px-4 py-2 mt-2 bg-accent-light-gray text-typo-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500" />
     </div>
 
     <div class="mb-4">
       <label for="phone" class="block text-lg text-typo-secondary font-medium">Телефон</label>
       <input id="phone" [(ngModel)]="phone" name="phone" (input)="checkForm()" type="text" required
-             class="w-full px-4 py-2 mt-2 text-typo-secondary border border-typo-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500" />
+             class="w-full px-4 py-2 mt-2 bg-accent-light-gray text-typo-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500" />
     </div>
 
-    <div *ngIf="showCaptcha" class="md:col-span-3">
+    <div *ngIf="showCaptcha" class="mb-4">
       <label for="captcha" class="block text-lg text-typo-secondary font-medium">Решите задачу</label>
       <div class="text-typo-secondary">{{ captchaQuestion }}</div>
       <input id="captcha" [(ngModel)]="captchaAnswer" (input)="checkForm()" name="captchaAnswer" type="text" required
-             class="w-full px-4 py-2 mt-2 text-typo-secondary border border-typo-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500" />
+             class="w-full px-4 py-2 mt-2 bg-accent-light-gray text-typo-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500" />
     </div>
 
     <div class="mb-4 text-center">

@@ -20,7 +20,7 @@ import {ReservModalComponent} from '../reserv-modal/reserv-modal.component';
 
       <div>
         <div class="mt-24">
-          <a (click)="openReservModal()" class="bg-typo-main text-typo-dark font-medium py-3 px-4 rounded-full hover:bg-hover-primary transition-colors text-center block">
+          <a (click)="openReservModal()" class="bg-typo-main text-typo-dark font-medium py-3 px-4 rounded-full hover:bg-accent-light-yellow transition-colors text-center block">
             Забронировать стол
           </a>
         </div>

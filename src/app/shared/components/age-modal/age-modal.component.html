@@ -1,0 +1,10 @@
+<div *ngIf="showAgeModal" class="fixed inset-0 bg-main-surface-secondary flex items-center justify-center z-50">
+  <div class="bg-main-surface-primary p-6 rounded-lg shadow-lg text-center max-w-xs">
+    <h2 class="text-xl font-bold text-typo-main mb-4">Тебе есть 18 лет?</h2>
+    <p class="text-typo-light mb-6">Этот сайт предназначен для лиц старше 18 лет.</p>
+    <div class="flex justify-between">
+      <button (click)="confirmAge(true)" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">Да</button>
+      <button (click)="confirmAge(false)" class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition">Нет</button>
+    </div>
+  </div>
+</div>

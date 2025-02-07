@@ -1,27 +1,3 @@
-@import "tailwindcss";
-
-@theme {
-  --color-main-surface-primary: #212121; /* Черный фон */
-
-  --color-sidebar-surface-primary: #171717; /* Серый sidebar */
-
-
-
-  --color-main-surface-secondary: #1A1A1A; /* Темно-серый фон */
-  --color-background-light: #F7F7F7; /* Светло-серый фон */
-
-  --color-typo-main: #D6B278; /* Песочно-золотистый для текста */
-  --color-typo-light: #FFFFFF; /* Белый для текста */
-  --color-typo-secondary: #D3D3D3; /* Светло-серый для подзаголовков */
-  --color-typo-dark: #333333; /* Темно-серый для основного текста */
-
-
-  --color-accent-olive: #B9A56B; /* Оливковый для мягких акцентов */
-  --color-accent-gold: #D4B97B; /* Золотисто-коричневый для кнопок */
-  --color-accent-light-yellow: #F1D9A1; /* Светлый желтый для подчеркивания */
-  --color-accent-light-gray: #303030;
-
-  --color-border-light: #B0B0B0; /* Средне-серый для границ */
-  --color-shadow-light: #999999; /* Светло-серый для теней */
-}
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

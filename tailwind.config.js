@@ -1,20 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{html,ts,css}",
+    "./src/**/*.{html,ts}",
   ],
   theme: {
     extend: {
       colors: {
 
-        // Основные цвета приложения
         main: {
           'surface-primary': '#212121',
-          'surface-secondary': '#E5E5E5',
-        },
+          'surface-secondary': '#1A1A1A',
 
-        typo: {
-          'secondary': '#b4b4b4'
         },
 
         sidebar: {
@@ -22,11 +18,18 @@ module.exports = {
           'surface-secondary': '#D6B278',
         },
 
-        // Цвета различных компонентов
-        green: {
-          500: '#01796F',
+        typo: {
+          'main': '#D6B278',
+          'secondary': '#D3D3D3',
+          'light': '#FFFFFF',
+          'dark': '#333333',
         },
 
+        accent: {
+          'gold': '#D4B97B',
+          'light-yellow': '#F1D9A1',
+          'light-gray': '#303030'
+        }
 
       },
       fontFamily: {

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../core/api.service';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-reserv-modal',
@@ -17,6 +17,7 @@ export class ReservModalComponent implements OnInit {
   public captchaQuestion: string = '';
   private captchaCorrectAnswer: number = 0;
   showCaptcha: boolean = false;
+  isFormSubmitted: boolean = false;
 
   @Output() closeModal: EventEmitter<void> = new EventEmitter();
 
@@ -39,6 +40,7 @@ export class ReservModalComponent implements OnInit {
 
   onClose() {
     this.closeModal.emit();
+    this.isFormSubmitted = false; // Сбросить форму при закрытии
   }
 
   async onSubmit() {
@@ -55,8 +57,7 @@ export class ReservModalComponent implements OnInit {
         try {
           const response = await this.apiService.postReservData(formData);
           console.log('Заявка отправлена успешно:', response);
-          alert('Заявка успешно отправлена!');
-          this.onClose();
+          this.isFormSubmitted = true;
         } catch (error) {
           console.error('Ошибка при отправке заявки:', error);
           alert('Произошла ошибка при отправке заявки.');
@@ -68,7 +69,6 @@ export class ReservModalComponent implements OnInit {
       alert('Пожалуйста, заполните все поля.');
     }
   }
-
 
   formatPhone(phone: string): string {
     phone = phone.replace(/\D/g, '');
