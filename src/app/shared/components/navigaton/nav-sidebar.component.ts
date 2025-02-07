@@ -13,8 +13,7 @@ import {RouterLink} from '@angular/router';
       <a routerLink="offers" class="font-semibold">Акции</a>
       <a routerLink="menu" class="font-semibold">Меню</a>
       <a routerLink="about" class="font-semibold">О нас</a>
-      <a routerLink="rules" class="font-semibold">Правила</a>
-      <a routerLink="contacts" class="font-semibold">Контакты</a>
+      <a routerLink="rules" class="font-semibold">Правила бара</a>
     </nav>
 
   `

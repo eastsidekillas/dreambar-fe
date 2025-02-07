@@ -17,6 +17,7 @@ export class ReservComponent implements OnInit {
   public captchaQuestion: string = '';
   private captchaCorrectAnswer: number = 0;
   showCaptcha: boolean = false;
+  isFormSubmitted: boolean = false;
 
   constructor(private apiService: ApiService) {}
 
@@ -35,6 +36,14 @@ export class ReservComponent implements OnInit {
     this.showCaptcha = this.name.trim().length > 0 && this.phone.trim().length > 0;
   }
 
+  onClose() {
+    this.isFormSubmitted = false;
+    this.showCaptcha = false;
+    this.captchaAnswer = ''
+    this.name = ''
+    this.phone = ''
+  }
+
   async onSubmit() {
     if (this.name.trim() && this.phone.trim() && this.captchaAnswer.trim()) {
       const userAnswer = parseInt(this.captchaAnswer, 10);
@@ -49,7 +58,7 @@ export class ReservComponent implements OnInit {
         try {
           const response = await this.apiService.postReservData(formData);
           console.log('Заявка отправлена успешно:', response);
-          alert('Заявка успешно отправлена!');
+          this.isFormSubmitted = true;
         } catch (error) {
           console.error('Ошибка при отправке заявки:', error);
           alert('Произошла ошибка при отправке заявки.');

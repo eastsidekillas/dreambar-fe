@@ -2,11 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ApiService} from '../../../core/api.service';
 import {CommonModule} from '@angular/common';
+import {ReservComponent} from '../../../shared/components/reserv/reserv.component';
+import {ShareButton} from 'ngx-sharebuttons/button';
 
 @Component({
   selector: 'app-offers-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReservComponent],
   templateUrl: './offers-detail.component.html',
   styleUrl: './offers-detail.component.css'
 })
